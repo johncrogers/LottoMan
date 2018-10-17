@@ -1,16 +1,44 @@
 let actions = {
-  create: () => {
+  create: ticketNumber => {
     const { existsSync, mkdirSync, writeFileSync } = require("fs");
     const { contents } = require(`${__dirname}/template`);
-    let ticketNumber = process.argv[3];
+
     if (!existsSync(`${__dirname}/tickets`)) {
       mkdirSync(`${__dirname}/tickets`);
     }
-    if (!existsSync(`${__dirname}/tickets/${ticketNumber}`)) {
-      mkdirSync(`${__dirname}/tickets/${ticketNumber}`);
+    if (!existsSync(`${__dirname}/tickets/active`)) {
+      mkdirSync(`${__dirname}/tickets/active`);
     }
-    writeFileSync(`${__dirname}/tickets/${ticketNumber}/TODO`, contents);
+    if (!existsSync(`${__dirname}/tickets/active/${ticketNumber}`)) {
+      mkdirSync(`${__dirname}/tickets/active/${ticketNumber}`);
+    }
+    writeFileSync(`${__dirname}/tickets/active/${ticketNumber}/TODO`, contents);
+  },
+  read: ticketNumber => {
+    const { readFileSync } = require("fs");
+    const contents = readFileSync(
+      `${__dirname}/tickets/active/${ticketNumber}/TODO`,
+      { encoding: "utf8" }
+    );
+
+    return contents;
+  },
+  print: ticketNumber => {
+    let file = actions.read(ticketNumber);
+
+    console.log(file);
+  },
+  current: ticketNumber => {
+    let fileContents = actions.read(ticketNumber).split("\n");
+    let pendingTasks = [];
+    for (let line of fileContents) {
+      if (line.includes("☐")) {
+        pendingTasks.push(line);
+      }
+    }
+    console.log(pendingTasks.join("\n"));
   }
 };
-let task = process.argv[2];
-actions[task]();
+const task = process.argv[2];
+const ticketNumber = process.argv[3];
+actions[task](ticketNumber);
