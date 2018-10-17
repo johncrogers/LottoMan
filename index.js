@@ -1,4 +1,21 @@
 let actions = {
+  init: () => {
+    const { writeFileSync } = require("fs");
+    const workspace =
+      "{" +
+      '  "folders": [' +
+      "    {" +
+      `      "path": "${__dirname}"` +
+      "    }" +
+      "  ]," +
+      '  "settings": {}' +
+      "}";
+    writeFileSync(`${__dirname}/tp.code-workspace`, workspace);
+  },
+  open: () => {
+    const { execSync } = require("child_process");
+    execSync(`open ${__dirname}/tp.code-workspace`);
+  },
   create: ticketNumber => {
     const { existsSync, mkdirSync, writeFileSync } = require("fs");
     const { contents } = require(`${__dirname}/template`);
