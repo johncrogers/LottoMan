@@ -6,7 +6,7 @@ let actions = {
     if (!existsSync(`${__dirname}/tickets`)) {
       mkdirSync(`${__dirname}/tickets`);
     }
-    if (!existsSync(`${__dirname}/${ticketNumber}`)) {
+    if (!existsSync(`${__dirname}/tickets/${ticketNumber}`)) {
       mkdirSync(`${__dirname}/tickets/${ticketNumber}`);
     }
     writeFileSync(`${__dirname}/tickets/${ticketNumber}/TODO`, contents);

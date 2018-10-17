@@ -10,6 +10,11 @@ module.exports.contents =
   "  ☐ Have someone review your attack plan & adjust if necessary. Repeat if necessary.\n" +
   "  ☐ Create benchmarks in calendar.\n" +
   "  ☐ Track & Execute.\n" +
+  "  ☐ Document Findings:\n" +
+  "    ☐ THIS PR:\n" +
+  "      ☐ \n" +
+  "    ☐ FUTURE:\n" +
+  "      ☐ \n" +
   "  ☐ Prep for Review:\n" +
   "    ☐ TEST:\n" +
   "      ☐ rspec\n" +
