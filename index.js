@@ -47,30 +47,52 @@ let actions = {
   },
   current: ticketNumber => {
     let fileContents = actions.read(ticketNumber).split("\n");
-    let pendingTasks = [];
+    let documentLines = [];
     for (let line of fileContents) {
-      if (line.includes(":" && !line.includes("✔"))) {
-        pendingTasks.push(line);
+      let isHeader = line.includes(":") && !line.includes("✔");
+      let isEndOfDocument = line.includes("DOCUMENT FINDINGS:");
+      let previousLine = documentLines[documentLines.length - 1];
+      let isLastLineHeader =
+        documentLines.length &&
+        previousLine.includes(":") &&
+        !previousLine.includes("✔");
+      let isPendingTask = line.includes("☐");
+      let documentContents = documentLines.join("\n");
+
+      if (isHeader) {
+        if (isEndOfDocument) {
+          // Exclude newly discovered issues.
+          return documentContents;
+        }
+        if (isLastLineHeader) {
+          // Exclude empty sections.
+          documentLines.pop();
+        }
+        documentLines.push(line);
       }
-      if (line.includes("☐")) {
-        pendingTasks.push(line);
+      if (isPendingTask) {
+        documentLines.push(line);
       }
     }
-    return pendingTasks.join("\n");
+    return documentContents;
   },
   day: (date, ticketNumber) => {
     const { existsSync, mkdirSync, writeFileSync } = require("fs");
     let { day } = require(`${__dirname}/template`);
-    day += "\nTASKS:\n";
+    let noGoalsFolder = !existsSync(`${__dirname}/goals`);
+    let noDaysFolder = !existsSync(`${__dirname}/goals/days`);
+    let noDateFolder = !existsSync(`${__dirname}/goals/days/${date}`);
+
+    day += "\n\nAGENDA:\n";
     day += actions.current(ticketNumber);
 
-    if (!existsSync(`${__dirname}/goals/days`)) {
+    if (noGoalsFolder) {
+      mkdirSync(`${__dirname}/goals`);
+    }
+    if (noDaysFolder) {
       mkdirSync(`${__dirname}/goals/days`);
     }
-    if (!existsSync(`${__dirname}/goals/days`)) {
-      mkdirSync(`${__dirname}/goals/days`);
-    }
-    if (!existsSync(`${__dirname}/goals/days/${date}`)) {
+    if (noDateFolder) {
       mkdirSync(`${__dirname}/goals/days/${date}`);
     }
     writeFileSync(`${__dirname}/goals/days/${date}/TODO`, day);

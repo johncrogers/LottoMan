@@ -1,40 +1,57 @@
 module.exports.ticket =
-  "PROCESS:\n" +
-  "  ☐ Ensure that you know what is intended by the ticket language.\n" +
-  "  ☐ Break down the ticket conceptually.\n" +
-  "  ☐ Generate an attack plan:\n" +
-  "    ☐ What is to be done?\n" +
-  "      List what you don't know.\n" +
-  "    ☐ What order to do it in?\n" +
-  "    ☐ When do you expect to finish things?\n" +
-  "  ☐ Have someone review your attack plan & adjust if necessary. Repeat if necessary.\n" +
-  "  ☐ Create benchmarks in calendar.\n" +
-  "  ☐ Track & Execute.\n" +
-  "  ☐ Document Findings:\n" +
-  "    ☐ THIS PR:\n" +
-  "      ☐ \n" +
-  "    ☐ FUTURE:\n" +
-  "      ☐ \n" +
-  "  ☐ Prep for Review:\n" +
-  "    ☐ TEST:\n" +
-  "      ☐ rspec\n" +
-  "      ☐ karma\n" +
-  "    ☐ Build PR:\n" +
-  "      ☐ Notes\n" +
-  "      ☐ Context\n" +
-  "      ☐ Changes\n" +
-  "      ☐ Testing:\n" +
-  "        ☐ Installation & Prep\n" +
-  "        ☐ User Type\n" +
-  "        ☐ Workflow\n" +
-  "        ☐ Expected Outcomes\n" +
-  "      ☐ TLDR\n" +
-  "  ☐ Debrief:\n" +
-  "    ☐ Did you meet expectations?\n" +
-  "    ☐ Were there unexpected difficulties?\n" +
-  "    ☐ Learnings:\n" +
-  "      - ?\n" +
-  "    ☐ What should we focus on to improve?\n";
+  "CLARIFY:\n" +
+  "Ensure you understand the intent of the ticket.\n" +
+  "  ☐ List intent here...\n" +
+  "\n" +
+  "BUILD PLAN:\n" +
+  "  ☐ Break down the ticket conceptually:\n" +
+  "    ☐ List concepts here...\n" +
+  "  ☐ Blockers:\n" +
+  "    ☐ Dont know...\n" +
+  "    ☐ Needed info...\n" +
+  "    ☐ Needed comms...\n" +
+  "  ☐ Required Tasks:\n" +
+  "    ☐ List tasks here...\n" +
+  "  ☐ Order Execution:\n" +
+  "    ☐ List fundamental task order - Deadline\n" +
+  "  ☐ Plan Review\n" +
+  "  ☐ Add to Calendar\n" +
+  "\n" +
+  "TRACK & EXECUTE:\n" +
+  "  ☐ Track items here...\n" +
+  "\n" +
+  "DOCUMENT FINDINGS:\n" +
+  "  Needs for this PR:\n" +
+  "    ☐ List discovered items here...\n" +
+  "\n" +
+  "  Needs for another PR:\n" +
+  "    Items not relavent, but worth generating content for...\n" +
+  "    `NEW TICKET`:\n" +
+  "      ☐ List items here...\n" +
+  "\n" +
+  "PREP FOR REVIEW:\n" +
+  "  ☐ TEST:\n" +
+  "    ☐ rspec\n" +
+  "    ☐ karma\n" +
+  "  ☐ Build PR:\n" +
+  "    ☐ Notes\n" +
+  "    ☐ Context\n" +
+  "    ☐ Changes\n" +
+  "    ☐ Testing:\n" +
+  "      ☐ Installation & Prep\n" +
+  "      ☐ User Type\n" +
+  "      ☐ Workflow\n" +
+  "      ☐ Expected Outcomes\n" +
+  "    ☐ TLDR\n" +
+  "TP:\n" +
+  "  ☐ Verify\n" +
+  "  ☐ Move ticket\n" +
+  "\n" +
+  "DEBRIEF:\n" +
+  "  ☐ Did you meet expectations?\n" +
+  "  ☐ Were there unexpected difficulties?\n" +
+  "  ☐ Learnings:\n" +
+  "  ☐ What should we focus on to improve?\n";
 module.exports.day =
   "ORGANIZATION OF DAY:\n" +
   "  - START: 7:00 AM\n" +
