@@ -1,4 +1,4 @@
-module.exports.contents =
+module.exports.ticket =
   "PROCESS:\n" +
   "  ☐ Ensure that you know what is intended by the ticket language.\n" +
   "  ☐ Break down the ticket conceptually.\n" +
@@ -35,3 +35,28 @@ module.exports.contents =
   "    ☐ Learnings:\n" +
   "      - ?\n" +
   "    ☐ What should we focus on to improve?\n";
+module.exports.day =
+  "ORGANIZATION OF DAY:\n" +
+  "  - START: 7:00 AM\n" +
+  "  - END: 5:00 PM\n" +
+  "  Start:\n" +
+  "    ☐ TP:\n" +
+  "      ☐ Ticket progress\n" +
+  "      ☐ Card Positions\n" +
+  "    ☐ Comms:\n" +
+  "      ☐ Email\n" +
+  "      ☐ Slack\n" +
+  "    ☐ Standup:\n" +
+  "      ☐ Review progress from previous day.\n" +
+  "      ☐ Generate expectations for the current day & document.\n" +
+  "    ☐ Tickets\n" +
+  "  Mid:\n" +
+  "    ☐ TP:\n" +
+  "      ☐ Ticket progress\n" +
+  "      ☐ Card Positions\n" +
+  "    ☐ Email\n" +
+  "  End:\n" +
+  "    ☐ TP:\n" +
+  "      ☐ Ticket progress\n" +
+  "      ☐ Card Positions\n" +
+  "    ☐ Plan next day.\n";

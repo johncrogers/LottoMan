@@ -18,7 +18,7 @@ let actions = {
   },
   create: ticketNumber => {
     const { existsSync, mkdirSync, writeFileSync } = require("fs");
-    const { contents } = require(`${__dirname}/template`);
+    const { ticket } = require(`${__dirname}/template`);
 
     if (!existsSync(`${__dirname}/tickets`)) {
       mkdirSync(`${__dirname}/tickets`);
@@ -49,13 +49,34 @@ let actions = {
     let fileContents = actions.read(ticketNumber).split("\n");
     let pendingTasks = [];
     for (let line of fileContents) {
+      if (line.includes(":" && !line.includes("✔"))) {
+        pendingTasks.push(line);
+      }
       if (line.includes("☐")) {
         pendingTasks.push(line);
       }
     }
-    console.log(pendingTasks.join("\n"));
+    return pendingTasks.join("\n");
+  },
+  day: (date, ticketNumber) => {
+    const { existsSync, mkdirSync, writeFileSync } = require("fs");
+    let { day } = require(`${__dirname}/template`);
+    day += "\nTASKS:\n";
+    day += actions.current(ticketNumber);
+
+    if (!existsSync(`${__dirname}/goals/days`)) {
+      mkdirSync(`${__dirname}/goals/days`);
+    }
+    if (!existsSync(`${__dirname}/goals/days`)) {
+      mkdirSync(`${__dirname}/goals/days`);
+    }
+    if (!existsSync(`${__dirname}/goals/days/${date}`)) {
+      mkdirSync(`${__dirname}/goals/days/${date}`);
+    }
+    writeFileSync(`${__dirname}/goals/days/${date}/TODO`, day);
   }
 };
 const task = process.argv[2];
-const ticketNumber = process.argv[3];
-actions[task](ticketNumber);
+const date = process.argv[3];
+const ticketNumber = process.argv[4];
+actions[task](date, ticketNumber);
